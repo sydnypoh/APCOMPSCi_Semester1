@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class BMI
 {
-	public static void main(String[]arg)
+	public static void main(String[]args)
 	{
 		Scanner keyboard = new Scanner(System.in);
 		
@@ -14,7 +14,7 @@ public class BMI
 		
 		int n = 703 * weight;
 		int d = height * height;
-		int bmi = n / d;
+		double bmi = n / d;
 		
 		System.out.println("Whoaa man. I leanred how to calculate BMI in school and because I'm so smart I did it in my head. You BMI is " + bmi);
 		
