@@ -16,7 +16,7 @@ public class SubwooferBox
 		
 		double ft = area.calcVol(h, l, w);
 		
-		System.out.println("The area of you space in cubic feet is " + ft + "ft^3");
+		System.out.printf("The area of your space in cubic feet is about %6.3f", ft);
 	}
 	
 	public double calcVol(double h, double l, double w)
