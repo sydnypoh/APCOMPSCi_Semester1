@@ -7,7 +7,7 @@ public class Lab_02
 		int answer = a * b;
 		String first = "Santa ";
 		String last = "Clause";
-		String one = "Candy ";
+		String one = " Candy ";
 		String two = "Sweet ";
 		String three = "Cane ";
 		String four = "Lane ";
