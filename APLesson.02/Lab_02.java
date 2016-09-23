@@ -5,13 +5,16 @@ public class Lab_02
 		int a = 9;
 		int b = 6;
 		int answer = a * b;
+		String first = "Santa ";
+		String last = "Clause";
 		String one = "Candy ";
 		String two = "Sweet ";
 		String three = "Cane ";
 		String four = "Lane ";
 		String five = "North ";
-		String six = "Pole ";
+		String six = "Pole, ";
 		String seven = "Antartica ";
+		int f = 54321;
 		int c = 12345;
 		int l = 3;
 		int w = 4;
@@ -23,9 +26,10 @@ public class Lab_02
 		int whole = 2 * half;
 		
 		
-		System.out.println("Nine times six equals " + answer);
-		System.out.println("My address is " + one + two + three + four);
-		System.out.println(five + six + seven +c);
-		System.out.println("The surface are of your ractangle is " + whole);
+		System.out.println("Nine times six equals " + answer + "\n");
+		System.out.println(first + last);
+		System.out.println(f + one + two + three + four);
+		System.out.println(five + six + seven + c + "\n");
+		System.out.println("The surface are of your rectangle is " + whole);
 	}
 }
