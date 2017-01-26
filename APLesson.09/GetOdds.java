@@ -7,7 +7,7 @@ public class GetOdds
 		fillArray();
 		System.out.print("For the following numbers ... ");
 		printArray();
-		System.out.println("\nThere are " + getOdds(numbers) + " odd numbers.");
+		System.out.println("\nThe numbers " + getOdds() + "are all odd numbers.");
 	}
 	public static void fillArray()
 	{
@@ -23,14 +23,14 @@ public class GetOdds
 			System.out.print(number + " ");
 		}
 	}
-	public static int getOdds(int[] numbers)
+	public static String getOdds()
 	{
-		int odd = 0;
+		String odd = "";
 		for(int number : numbers)
 		{
 			if(number % 2 == 1)
 			{
-				odd++;
+				odd += number + " ";
 			}
 		}
 		return odd;
