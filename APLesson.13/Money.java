@@ -42,6 +42,6 @@ public abstract class Money
 	
 	public String toString()
 	{
-		return "your " + name + " is worth $" + value + ".\n";
+		return "yours " + name + " is worth $" + value + ".\n";
 	}
 }
