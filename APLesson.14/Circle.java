@@ -1,7 +1,7 @@
 public class Circle implements CutShapes
 {
 	private double radius;
-	private double number;
+	
 	public Circle()
 	{
 		radius = 0;
@@ -10,7 +10,6 @@ public class Circle implements CutShapes
 	public Circle(double r)
 	{
 		radius = r;
-		number = 47;
 	}
 	
 	public double getRadius()
