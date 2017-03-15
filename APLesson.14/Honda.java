@@ -35,6 +35,5 @@ public class Honda extends Car
 		location[1] = ycord;
 		return location;
 	}
-	
 
 }
