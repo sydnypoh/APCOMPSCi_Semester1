@@ -1,7 +1,8 @@
-public class Honda implements Location
+public class Honda extends Car
 {
 	private double xcord, ycord;
 	private int ID;
+	
 	public Honda()
 	{
 		xcord = 0;
@@ -10,24 +11,23 @@ public class Honda implements Location
 	
 	public Honda(double[] l)
 	{
+		double[] location = new double[2];
+		ID = (int)(Math.random()*1000000)+999999;
 		xcord = l[0];
 		ycord = l[1];
-	}
-	
-	public void setID()
-	{
-		ID = (int)(Math.random()*1000000)+100000;
 	}
 	
 	public int getID()
 	{
 		return ID;
 	}
+	
 	public void move(double x, double y)
 	{
 		xcord += x;
 		ycord += y;
 	}
+	
 	public double[] getLoc()
 	{
 		double[] location = new double[2];
@@ -35,4 +35,6 @@ public class Honda implements Location
 		location[1] = ycord;
 		return location;
 	}
+	
+
 }

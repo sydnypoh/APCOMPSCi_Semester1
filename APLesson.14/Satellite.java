@@ -13,28 +13,29 @@ public class Satellite
        double[] home = {0, 0};
 
 
-       String printout = "\n\n" +
-               "==========================" + "\nStarting locations...";
-
-
+       System.out.println("\n\n" + "==========================" + "\nStarting locations...\n");
        for (Location l : locate)
        {
-           l.setID();
-		   printout += "\nLocation for " + l.getID() + ": (" + getLocation(l.getLoc()) + ")";
+           System.out.println("Location for " + l.getID() + ": (" + getLocation(l.getLoc()) + ")");
        }
 
-
-       printout += "\n\n" + "==========================" +
-                   "\nDistance from home...";
-
-
+	   System.out.println("\n\n" + "==========================");
+	   for (Location l: locate)
+	   {
+		   double x, y;
+		   x = (Math.random()*100)+1;
+		   y = (Math.random()*100)+1;
+		   System.out.printf("After %6d moved (%4.2f, %4.2f)\n", l.getID(), x ,y);
+		   l.move(x,y);
+		   System.out.println("New Location: (" + getLocation(l.getLoc()) + ")\n");
+	   }
+	   
+       System.out.println("\n" + "==========================" + "\nDistance from home...\n");
        for (Location l : locate)
        {
-           printout += "\nDistance for " + l.getID() + ": (" + getDistance(l.getLoc(), home)+ ")";
+           System.out.printf("Distance for %6d: (%4.2f)\n", l.getID(), getDistance(l.getLoc(), home));
        }
 
-
-       System.out.println(printout);
    }
 
 
@@ -46,6 +47,6 @@ public class Satellite
 
    public static String getLocation(double[] loc)
    {
-       return loc[0] + ", " + loc[1];
+       return String.format("%4.2f, %4.2f", loc[0], loc[1]);
    }
 }

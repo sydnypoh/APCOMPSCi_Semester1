@@ -1,6 +1,6 @@
 public interface Location
 {
 	double[] getLoc();
-	void setID();
 	int getID();
+	void move(double x, double y);
 }
