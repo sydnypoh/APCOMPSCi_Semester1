@@ -5,11 +5,6 @@ public class Magpie2
 		return "Hello, let's talk.";
 	}
 	
-	/** getResponse() method
-	 * ===========================================
-	 * 	Gives a response to a user statement
-	 *  @param statement (the user statement)
-	 * 	@return a response based on the rules given */
 	public String getResponse(String statement)
 	{
 		String response = "";
@@ -46,28 +41,26 @@ public class Magpie2
 			response = "He sounds like a pretty dank teacher.";
 		}
 		
-
-		
-		
-
-		/** Exercise_03(Final)
-		 * ==================================================
-		 * Create additional code (another else if) that
-		 * responds "Tell me more about your pet" if the
-		 * user mentions the word cat, dog, fish, or turtle
-		 * in their statement.
-		 *
-		 * Create addtional code (another else if) that
-		 * responds "He sounds like a pretty dank teacher"
-		 * if you mention "Robinette" in your statement */
+		else if (findKeyword(statement, "i want to", 0) >= 0)
+		{
+			response = transformIWantToStatement(statement);
+		}
 
 		else
 		{
-			response = getRandomResponse();
+			int psn = findKeyword(statement, "you", 0);
+			if(psn >= 0 && findKeyword(statement, "me", psn) >= 0)
+			{
+				response = transformYouMeStatement(statement);
+			}
+			
+			else
+			{
+				response = getRandomResponse();
+			}
 		}
 		return response;
 	}
-
 
 	private int findKeyword(String statement, String goal, int startPos)
 	{
@@ -85,7 +78,7 @@ public class Magpie2
 			{
 				return phrase.indexOf(goal, psn+1);
 			}
-			return psn;			
+			return psn - 1;			
 		}
 		return -1;
 		
@@ -96,10 +89,6 @@ public class Magpie2
 		return findKeyword(statement, goal, 0);
 	}
 
-	/** getRandomResponse() method
-	 * =============================================================*/
-	/** Pick a default response to use if nothing else fits.
-	 * 	@return a non-committal string*/
 	private String getRandomResponse()
 	{
 		final int NUMBER_OF_RESPONSES = 4;
@@ -117,5 +106,38 @@ public class Magpie2
 			response = "You don't say.";
 
 		return response;
+	}
+	
+	private String transformIWantToStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length()-1);
+		
+		if(lastChar.equals("."))
+		{
+			statement = statement.replace(lastChar,"");
+		}
+		
+		int psn = findKeyword(statement, "i want to");
+		String restOfStatement = statement.substring(psn + 9, statement.length());
+		
+		return "What would it mean to " + restOfStatement;
+	}
+	
+	private String transformYouMeStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length()-1);
+		
+		if(lastChar.equals("."))
+		{
+			statement = statement.replace(lastChar,"");
+		}
+		
+		int psnOfYou = findKeyword(statement, "you");
+		int psnOfMe = findKeyword(statement, "me", psnOfYou + 3);
+		String restOfStatement = statement.substring(psnOfYou + 3, psnOfMe -1);
+		
+		return "What makes you think that I " + restOfStatement + "you?";
 	}
 }
