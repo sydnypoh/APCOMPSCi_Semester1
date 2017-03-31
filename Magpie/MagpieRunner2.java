@@ -16,7 +16,6 @@ public class MagpieRunner2
 			statement = in.nextLine();
 		}
 	}
-
 }
 
 //Jonathon I need help 

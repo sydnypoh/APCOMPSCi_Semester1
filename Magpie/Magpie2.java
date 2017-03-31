@@ -46,12 +46,19 @@ public class Magpie2
 			response = transformIWantToStatement(statement);
 		}
 
-		else
-		{
+		
+		else{
+
 			int psn = findKeyword(statement, "you", 0);
-			if(psn >= 0 && findKeyword(statement, "me", psn) >= 0)
+			int pos = findKeyword(statement, "i", 0);
+			if (psn >= 0 && findKeyword(statement, "me", psn) >= 0)
 			{
 				response = transformYouMeStatement(statement);
+			}
+			
+			else if (pos >= 0 && findKeyword(statement, "you", pos) >= 0)
+			{
+				response = transformIYouStatement(statement);
 			}
 			
 			else
@@ -121,7 +128,7 @@ public class Magpie2
 		int psn = findKeyword(statement, "i want to");
 		String restOfStatement = statement.substring(psn + 9, statement.length());
 		
-		return "What would it mean to " + restOfStatement;
+		return "What would it mean to " + restOfStatement + "?";
 	}
 	
 	private String transformYouMeStatement(String statement)
@@ -140,4 +147,22 @@ public class Magpie2
 		
 		return "What makes you think that I " + restOfStatement + "you?";
 	}
+	
+	private String transformIYouStatement(String statement)
+	{
+		statement = statement.trim();
+		String lastChar = statement.substring(statement.length()-1);
+		
+		if(lastChar.equals("."))
+		{
+			statement = statement.replace(lastChar,"");
+		}
+		
+		int psnOfI = findKeyword(statement, "i");
+		int psnOfU = findKeyword(statement, "you");
+		String restOfStatement = statement.substring(psnOfI + 1, psnOfU-1);
+		
+		return "Why do you " + restOfStatement + "me?";
+	}
+	
 }
