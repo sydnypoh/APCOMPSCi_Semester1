@@ -78,18 +78,22 @@ public class toystore
 			{
 				x++;
 			}
-			else if (b.getType().equalsIgnoreCase("afigure"))
+			else if (b.getType().equalsIgnoreCase("af"))
 			{
 				y++;
 			}
 		}
-		if(x < y)
+		if(x > y)
 		{
 			return "car";
 		}
-		else
+		else if(x < y)
 		{
 			return "action figure";
+		}
+		else
+		{
+			return "same amount";
 		}
 	}
 	
