@@ -118,9 +118,9 @@ public class Picture extends SimplePicture
 	  {
 		  for(Pixel pixelObj : rowArray)
 		  {
-			  pixelObj.setRed(pixelObj.getRed() - 255);
-			  pixelObj.setGreen(pixelObj.getGreen() - 255);
-			  pixelObj.setBlue(pixelObj.getBlue() - 255);
+			  pixelObj.setRed(255 - pixelObj.getRed());
+			  pixelObj.setGreen(255 - pixelObj.getGreen());
+			  pixelObj.setBlue(255 - pixelObj.getBlue());
 		  }
 	  }
   }
@@ -372,47 +372,29 @@ public class Picture extends SimplePicture
   /** Method to show large changes in color 
     * @param edgeDist the distance for finding edges
     */
-  public void edgeDetection(int edgeDist)
+   public void edgeDetection(int edgeDist)
   {
     Pixel leftPixel = null;
     Pixel rightPixel = null;
+    Pixel topPixel = null;
+    Pixel bottomPixel = null;
+    
     Pixel[][] pixels = this.getPixels2D();
-    Color rightColor = null;
-	Pixel topPixel = null;
-	Pixel bottomPixel = null;
-	Color bottomColor = null;
-    for (int row = 0; row < pixels.length; row++)
+    for (int row = 0; row < pixels.length - 1; row++)
     {
-      for (int col = 0; 
-           col < pixels[0].length-1; col++)
+      for (int col = 0; col < pixels[0].length-1; col++)
       {
         leftPixel = pixels[row][col];
         rightPixel = pixels[row][col+1];
-        rightColor = rightPixel.getColor();
-        if (leftPixel.colorDistance(rightColor) > 
-            edgeDist)
+        topPixel = pixels[row][col];
+        bottomPixel = pixels[row + 1][col];
+        if (leftPixel.colorDistance(rightPixel.getColor()) > edgeDist ||
+            topPixel.colorDistance(bottomPixel.getColor()) > edgeDist)
           leftPixel.setColor(Color.BLACK);
         else
           leftPixel.setColor(Color.WHITE);
       }
     }
-	for(int row1 = 0; row1 < pixels.length-1; row1++)
-	{
-		for(int col1 = 0; col1 < pixels[0].length; col1++)
-		{
-			topPixel = pixels[row1][col1];
-			bottomPixel = pixels[row1+1][col1];
-			bottomColor = bottomPixel.getColor();
-			if(topPixel.colorDistance(bottomColor) > edgeDist)
-			{
-				topPixel.setColor(Color.BLACK);
-			}
-			else
-			{
-				leftPixel.setColor(Color.WHITE);
-			}
-		}
-	}
   }
   
   

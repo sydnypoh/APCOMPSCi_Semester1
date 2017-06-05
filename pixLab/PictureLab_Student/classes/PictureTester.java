@@ -93,6 +93,7 @@ public class PictureTester
  public static void testNegate()
  {
 	 Picture flower = new Picture("whiteFlower.jpg");
+	 flower.explore();
 	 flower.negate();
 	 flower.explore();
  }
@@ -143,11 +144,11 @@ public class PictureTester
     // uncomment a call here to run a test
     // and comment out the ones you don't want
     // to run
-    testZeroBlue();
+    //testZeroBlue();
     //testKeepOnlyBlue();
     //testKeepOnlyRed();
     //testKeepOnlyGreen();
-    //testNegate();
+    testNegate();
     //testGrayscale();
     //testFixUnderwater();
     //testMirrorVertical();
